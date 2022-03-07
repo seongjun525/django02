@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block con %}
+
+<div class="container mt-5 mb-5">
+    <h1><b>New Topic</b></h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="sub" class="form-control mt-3" placeholder="주제를 입력하세요"><br>
+        <textarea name="con" class="form-control" placeholder="내용을 입력하세요" style="height: 150px;"></textarea><br>
+
+        <div class="text-center">
+            <button type="button" onclick="make()" class="btn btn-secondary">항목추가</button>
+            <button class="btn btn-primary">생성하기</button>
+        </div>
+
+        <div id="here" class="row mt-3"></div>
+
+    </form>
+
+    <script>
+        function make(){
+            d = document.getElementById("here");
+            n = document.createElement("div");
+            n.setAttribute('class', 'col-lg-4 mt-4');
+            n.innerHTML = '<div class="card" style="padding: 20px;">\
+                <input type="text" name="cname" class="form-control" placeholder="보기의 이름을 입력하세요"><br>\
+                <input type="file" name="cpic"  class="form-control"><br>\
+                <textarea name="ccom" class="form-control" placeholder="보기의 내용을 입력하세요"></textarea>\
+            </div>';
+            d.appendChild(n);
+
+        }
+    </script>
+
+</div>
+
+{% endblock %}
